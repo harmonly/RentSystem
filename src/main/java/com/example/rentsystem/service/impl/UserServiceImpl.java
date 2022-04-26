@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+
+    @Override
+    public boolean signup(User user) {
+        return this.addUser(user) == 1;
+    }
 }

@@ -16,4 +16,6 @@ public interface UserService {
     User getUser(String account, String password);
 
     boolean auth(String account, String password, HttpSession session);
+
+    boolean signup(User user);
 }
