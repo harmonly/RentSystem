@@ -25,14 +25,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Context context = new Context();
-        if (req.getSession().getAttribute("login-failure") != null) {
-            context.setVariable("failure", true);
-            req.getSession().removeAttribute("login-failure");
-        }
-        if(req.getSession().getAttribute("user")!=null){
-            resp.sendRedirect("index");
-            return;
-        }
         ThymeleafUtil.process("login.html", context, resp.getWriter());
     }
 
@@ -40,12 +32,10 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        String remember = req.getParameter("remember-me");
+        String keepLog = req.getParameter("keep-log");
         if (service.auth(username, password, req.getSession())) {
             resp.sendRedirect("index");
-            //resp.getWriter().write("Login Success!");
         } else {
-            req.getSession().setAttribute("login-failure", new Object());
             this.doGet(req, resp);
         }
     }

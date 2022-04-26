@@ -1,6 +1,11 @@
 import com.example.rentsystem.entity.Order;
+import com.example.rentsystem.mapper.UserMapper;
 import com.example.rentsystem.service.OrderService;
+import com.example.rentsystem.service.UserService;
 import com.example.rentsystem.service.impl.OrderServiceImpl;
+import com.example.rentsystem.service.impl.UserServiceImpl;
+import com.example.rentsystem.utils.SqlUtil;
+import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -18,7 +23,7 @@ public class MainTest {
                 .price(998)
                 .build());
         service.getHouses().forEach(System.out::println);*/
-        OrderService service = new OrderServiceImpl();
+/*        OrderService service = new OrderServiceImpl();
         service.addOrder(Order.builder()
                 .ownerId(1)
                 .buyId(1)
@@ -26,6 +31,9 @@ public class MainTest {
                 .bTime(new Date())
                 .eTime(new Date())
                 .build());
-        service.getOrders().forEach(System.out::println);
+        service.getOrders().forEach(System.out::println);*/
+        SqlSession session = SqlUtil.getSession();
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        System.out.println(mapper.getUser("123", "123"));
     }
 }
