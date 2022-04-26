@@ -1,4 +1,4 @@
-package com.example.rentsystem.servlet.auth;
+package com.example.rentsystem.servlet.pages;
 
 import com.example.rentsystem.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
@@ -15,10 +15,6 @@ public class IndexServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getSession().getAttribute("user") == null) {
-            resp.sendRedirect("login");
-            return;
-        }
         Context context = new Context();
         ThymeleafUtil.process("index.html", context, resp.getWriter());
     }

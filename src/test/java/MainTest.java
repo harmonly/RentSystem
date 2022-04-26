@@ -1,5 +1,6 @@
 import com.example.rentsystem.entity.Order;
 import com.example.rentsystem.entity.User;
+import com.example.rentsystem.mapper.HouseMapper;
 import com.example.rentsystem.mapper.UserMapper;
 import com.example.rentsystem.service.OrderService;
 import com.example.rentsystem.service.UserService;
@@ -34,6 +35,7 @@ public class MainTest {
                 .build());
         service.getOrders().forEach(System.out::println);*/
         SqlSession session = SqlUtil.getSession();
-        UserMapper mapper = session.getMapper(UserMapper.class);
+        HouseMapper mapper = session.getMapper(HouseMapper.class);
+        mapper.getHouses().forEach(System.out::println);
     }
 }

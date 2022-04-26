@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface HouseMapper {
 
-    @Insert("insert into house(owner_id, name, price, location, is_rent) " +
-            "VALUES(#{ownerId}, #{name}, #{price}, #{location}, #{isRent})")
+    @Insert("insert into house(owner_id, name, price, location, is_rent, b_time, e_time) " +
+            "VALUES(#{ownerId}, #{name}, #{price}, #{location}, #{isRent}, #{bTime}, #{eTime})")
     int addHouse(House house);
 
     @Delete("delete from house where id = #{id}")
@@ -16,12 +16,19 @@ public interface HouseMapper {
 
     @Results({
             @Result(column = "owner_id", property = "ownerId"),
-            @Result(column = "is_rent", property = "isRent")
+            @Result(column = "is_rent", property = "isRent"),
+            @Result(column = "b_time", property = "bTime"),
+            @Result(column = "e_time", property = "eTime")
     })
     @Select("select * from house where id = #{id}")
     House getHouse(int id);
 
-    @Results({@Result(column = "is_rent", property = "isRent")})
+    @Results({
+            @Result(column = "owner_id", property = "ownerId"),
+            @Result(column = "is_rent", property = "isRent"),
+            @Result(column = "b_time", property = "bTime"),
+            @Result(column = "e_time", property = "eTime")
+    })
     @Select("select * from house")
     List<House> getHouses();
 }
