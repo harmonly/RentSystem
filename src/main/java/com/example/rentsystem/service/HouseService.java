@@ -15,4 +15,6 @@ public interface HouseService {
     List<House> getHouses();
 
     List<House> getUserHouses(int id);
+
+    int editHouse(House house);
 }

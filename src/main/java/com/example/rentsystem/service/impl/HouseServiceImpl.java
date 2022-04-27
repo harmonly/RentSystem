@@ -49,4 +49,12 @@ public class HouseServiceImpl implements HouseService {
             return mapper.getUserHouses(id);
         }
     }
+
+    @Override
+    public int editHouse(House house) {
+        try (SqlSession session = SqlUtil.getSession()) {
+            HouseMapper mapper = session.getMapper(HouseMapper.class);
+            return mapper.editHouse(house);
+        }
+    }
 }

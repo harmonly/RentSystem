@@ -10,12 +10,15 @@ import com.example.rentsystem.utils.SqlUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class MainTest {
 
     @Test
-    public void test() {
+    public void test() throws ParseException {
 /*        HouseService service = new HouseServiceImpl();
         service.addHouse(House.builder()
                 .isRent(0)
@@ -34,8 +37,8 @@ public class MainTest {
                 .eTime(new Date())
                 .build());
         service.getOrders().forEach(System.out::println);*/
-        SqlSession session = SqlUtil.getSession();
+/*        SqlSession session = SqlUtil.getSession();
         HouseMapper mapper = session.getMapper(HouseMapper.class);
-        mapper.getHouses().forEach(System.out::println);
+        mapper.getHouses().forEach(System.out::println);*/
     }
 }

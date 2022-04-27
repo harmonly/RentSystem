@@ -444,7 +444,8 @@
                         </div>
                         <div class="job_content">
                             <ul>
-                                <li>出租时间: <span th:text="${house.parseBTime()}"></span></li>
+                                <li>出租日期: <span th:text="${house.parseBTime()}"></span></li>
+                                <li>截止日期: <span th:text="${house.parseETime()}"></span></li>
                                 <li>每月价格: <span th:text="${house.getPrice()} + |元|"></span></li>
                                 <li>位置: <span th:text="${house.getLocation()}"></span></li>
                             </ul>

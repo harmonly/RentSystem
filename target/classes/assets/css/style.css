@@ -2870,6 +2870,41 @@ hr {
     outline: none
 }
 
+.boxed-btn4 {
+    background: #00D363;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 5px 5px 5px;
+    margin-top: 5px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    border: 1px solid transparent;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff !important;
+    text-transform: capitalize;
+    -webkit-transition: all .3s ease-out 0s;
+    -moz-transition: all .3s ease-out 0s;
+    -ms-transition: all .3s ease-out 0s;
+    -o-transition: all .3s ease-out 0s;
+    transition: all .3s ease-out 0s;
+    cursor: pointer
+}
+
+.boxed-btn4:hover {
+    color: #00D363 !important;
+    border: 1px solid #00D363;
+    background: transparent
+}
+
+.boxed-btn4:focus {
+    outline: none
+}
+
 .login-btn {
     padding: 19px 35px
 }

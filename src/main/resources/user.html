@@ -92,6 +92,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <form method="post" action="change-house-is-rent">
+                                        <label style="display: none">
+                                            <input type="text" name="house-id" th:value="${house.getId()}">
+                                        </label>
+                                        <button type="submit" th:if="${house.getIsRent()}" class="boxed-btn4">取消已租用</button>
+                                        <button type="submit" th:unless="${house.getIsRent()}" class="boxed-btn4">确认已租用</button>
+                                    </form>
+                                    <form method="post" action="delete-house" class="apply_now">
+                                        <label style="display: none">
+                                            <input type="text" name="house-id" th:value="${house.getId()}">
+                                        </label>
+                                        <button type="submit" class="boxed-btn4">删除房屋</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -107,9 +124,13 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="share_wrap d-flex">
+                        <a href="add-house" class="boxed-btn3 w-100" type="submit">添加房屋</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 
