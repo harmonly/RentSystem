@@ -1,14 +1,17 @@
 package com.example.rentsystem.servlet.pages;
 
+import com.example.rentsystem.entity.House;
+import com.example.rentsystem.entity.User;
 import com.example.rentsystem.service.HouseService;
+import com.example.rentsystem.service.UserService;
 import com.example.rentsystem.service.impl.HouseServiceImpl;
+import com.example.rentsystem.service.impl.UserServiceImpl;
 import com.example.rentsystem.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.thymeleaf.Thymeleaf;
 import org.thymeleaf.context.Context;
 
 import java.io.IOException;
@@ -16,18 +19,23 @@ import java.io.IOException;
 @WebServlet("/borrow-house")
 public class BorrowHouseServlet extends HttpServlet {
 
-    HouseService service;
+    HouseService houseService;
+    UserService userService;
 
     @Override
     public void init() throws ServletException {
-        service = new HouseServiceImpl();
+        houseService = new HouseServiceImpl();
+        userService = new UserServiceImpl();
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int houseId = Integer.parseInt(req.getParameter("house-id"));
         Context context = new Context();
-        context.setVariable("house", service.getHouse(houseId));
+        House house = houseService.getHouse(houseId);
+        User user = userService.getUserById(house.getOwnerId());
+        context.setVariable("house", house);
+        context.setVariable("phone", user.getPhone());
         ThymeleafUtil.process("borrow-house.html", context, resp.getWriter());
     }
 }

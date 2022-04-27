@@ -36,6 +36,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserById(int id) {
+        try (SqlSession session = SqlUtil.getSession()) {
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            return mapper.getUserById(id);
+        }
+    }
+
+    @Override
     public User getUser(String account, String password) {
         try (SqlSession session = SqlUtil.getSession()) {
             UserMapper mapper = session.getMapper(UserMapper.class);

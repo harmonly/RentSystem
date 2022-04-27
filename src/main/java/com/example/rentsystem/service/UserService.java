@@ -13,6 +13,8 @@ public interface UserService {
 
     List<User> getUsers();
 
+    User getUserById(int id);
+
     User getUser(String account, String password);
 
     boolean auth(String account, String password, HttpSession session);
