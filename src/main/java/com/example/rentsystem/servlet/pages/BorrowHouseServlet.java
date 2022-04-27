@@ -30,6 +30,11 @@ public class BorrowHouseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getSession().getAttribute("user") == null) {
+            req.getSession().setAttribute("login-first",true);
+            resp.sendRedirect("login");
+            return;
+        }
         int houseId = Integer.parseInt(req.getParameter("house-id"));
         Context context = new Context();
         House house = houseService.getHouse(houseId);

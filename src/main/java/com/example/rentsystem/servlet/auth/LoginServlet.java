@@ -30,6 +30,10 @@ public class LoginServlet extends HttpServlet {
 
         String loginInfo = "输入用户名和密码进行登录";
         String loginInfoStyle = "";
+        if (session.getAttribute("login-first") != null) {
+            loginInfo = "请先登录再操作";
+            loginInfoStyle = "color: red;font-weight: bold;";
+        }
         if (session.getAttribute("login-failure") != null) {
             loginInfo = "您输入的用户名或密码错误";
             loginInfoStyle = "color: red;font-weight: bold;";

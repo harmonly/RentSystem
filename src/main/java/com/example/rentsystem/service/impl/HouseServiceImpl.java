@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 public class HouseServiceImpl implements HouseService {
+
     @Override
     public int addHouse(House house) {
         try (SqlSession session = SqlUtil.getSession()) {
@@ -38,6 +39,14 @@ public class HouseServiceImpl implements HouseService {
         try (SqlSession session = SqlUtil.getSession()) {
             HouseMapper mapper = session.getMapper(HouseMapper.class);
             return mapper.getHouses();
+        }
+    }
+
+    @Override
+    public List<House> getUserHouses(int id) {
+        try (SqlSession session = SqlUtil.getSession()) {
+            HouseMapper mapper = session.getMapper(HouseMapper.class);
+            return mapper.getUserHouses(id);
         }
     }
 }

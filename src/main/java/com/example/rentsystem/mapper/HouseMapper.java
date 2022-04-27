@@ -31,4 +31,13 @@ public interface HouseMapper {
     })
     @Select("select * from house")
     List<House> getHouses();
+
+    @Results({
+            @Result(column = "owner_id", property = "ownerId"),
+            @Result(column = "is_rent", property = "isRent"),
+            @Result(column = "b_time", property = "bTime"),
+            @Result(column = "e_time", property = "eTime")
+    })
+    @Select("select * from house where owner_id = ${id}")
+    List<House> getUserHouses(int id);
 }

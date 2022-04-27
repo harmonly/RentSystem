@@ -13,4 +13,6 @@ public interface HouseService {
     House getHouse(int id);
 
     List<House> getHouses();
+
+    List<House> getUserHouses(int id);
 }
