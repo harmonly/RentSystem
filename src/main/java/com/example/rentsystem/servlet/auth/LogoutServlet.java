@@ -1,22 +1,19 @@
-package com.example.rentsystem.servlet.pages;
+package com.example.rentsystem.servlet.auth;
 
-import com.example.rentsystem.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.thymeleaf.context.Context;
 
 import java.io.IOException;
 
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/logout")
+public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Context context = new Context();
-        context.setVariable("user",req.getSession().getAttribute("user"));
-        ThymeleafUtil.process("index.html", context, resp.getWriter());
+        req.getSession().removeAttribute("user");
+        resp.sendRedirect("login");
     }
 }

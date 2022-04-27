@@ -25,6 +25,7 @@ public class BrowseHouseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Context context = new Context();
+        context.setVariable("user", req.getSession().getAttribute("user"));
         context.setVariable("house_list", service.getHouses());
         ThymeleafUtil.process("house.html", context, resp.getWriter());
     }

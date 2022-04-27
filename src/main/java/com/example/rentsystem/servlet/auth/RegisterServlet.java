@@ -27,6 +27,12 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        // 已经登录
+        if (session.getAttribute("user") != null) {
+            resp.sendRedirect("index");
+            return;
+        }
+
         Context context = new Context();
 
         String signUpInfo = "创建您的账号进入网站";
@@ -40,6 +46,7 @@ public class RegisterServlet extends HttpServlet {
             signUpInfoStyle = "color: red;font-weight: bold;";
         }
 
+        context.setVariable("user", null);
         context.setVariable("sign_up_info", signUpInfo);
         context.setVariable("sign_up_info_style", signUpInfoStyle);
 

@@ -30,15 +30,16 @@ public class BorrowHouseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getSession().getAttribute("user") == null) {
-            req.getSession().setAttribute("login-first",true);
+        User user = (User) req.getSession().getAttribute("user");
+        if (user == null) {
+            req.getSession().setAttribute("login-first", true);
             resp.sendRedirect("login");
             return;
         }
         int houseId = Integer.parseInt(req.getParameter("house-id"));
         Context context = new Context();
         House house = houseService.getHouse(houseId);
-        User user = userService.getUserById(house.getOwnerId());
+        context.setVariable("user", user);
         context.setVariable("house", house);
         context.setVariable("phone", user.getPhone());
         ThymeleafUtil.process("borrow-house.html", context, resp.getWriter());
