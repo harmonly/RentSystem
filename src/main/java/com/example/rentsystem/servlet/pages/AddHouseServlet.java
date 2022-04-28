@@ -44,7 +44,7 @@ public class AddHouseServlet extends HttpServlet {
         if (session.getAttribute("add-house-failure") != null) {
             context.setVariable("add_house_info", "输入信息不完整");
             context.setVariable("add_house_info_style", "color: red;font-weight: bold;");
-            session.removeAttribute("login-first");
+            session.removeAttribute("add-house-failure");
         }
 
         ThymeleafUtil.process("add-house.html", context, resp.getWriter());
@@ -81,6 +81,6 @@ public class AddHouseServlet extends HttpServlet {
                 .price(Integer.parseInt(price))
                 .pic(String.format("./assets/img/icon/%s.svg", new Random().nextInt(6) + 1))
                 .build());
-        resp.sendRedirect("user");
+        resp.sendRedirect("personal-house");
     }
 }

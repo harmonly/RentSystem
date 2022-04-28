@@ -424,16 +424,24 @@
                             </div>
                         </div>
                         <div class="single_wrap">
-                            <div class="row">
-                                <div class="col-md-12">
+                            <form method="post" action="add-order" class="row">
+                                <label style="display: none">
+                                    <input name="house-id" th:value="${house.getId()}">
+                                </label>
+                                <div class="col-md-6">
+                                    <p>租用月数</p>
+                                    <label>
+                                        <input type="number" name="months">
+                                    </label>
+                                </div>
+                                <div class="col-md-12" style="margin-top: 10px">
                                     <div class="submit_btn">
-                                        <button id="btn-phone" class="boxed-btn3 w-100" onclick="showPhone()">电话联系
-                                            <p id="phone" style="display: none" th:text="${phone}"></p>
+                                        <button id="btn-phone" class="boxed-btn3 w-100" type="submit">立刻租用
                                         </button>
                                         <button id="btn-show" style="display: none" class="boxed-btn3 w-100"></button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -455,8 +463,6 @@
             </div>
         </div>
     </div>
-
-
 </main>
 <div th:replace="template.html::footer"></div>
 <!-- Scroll Up -->
@@ -492,15 +498,5 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
-
-<script>
-    function showPhone(phone) {
-        var btn = document.getElementById("btn-phone");
-        btn.style.display = "none";
-        var show = document.getElementById("btn-show");
-        show.innerText = "电话号码: " + document.getElementById("phone").innerText;
-        show.style.display = "";
-    }
-</script>
 </body>
 </html>

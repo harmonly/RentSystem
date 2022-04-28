@@ -1,4 +1,4 @@
-package com.example.rentsystem.servlet.pages;
+package com.example.rentsystem.servlet.api;
 
 import com.example.rentsystem.entity.User;
 import com.example.rentsystem.service.HouseService;
@@ -32,6 +32,6 @@ public class DeleteHouseServlet extends HttpServlet {
             return;
         }
         service.deleteHouse(Integer.parseInt(req.getParameter("house-id")));
-        resp.sendRedirect("user");
+        resp.sendRedirect("personal-house");
     }
 }

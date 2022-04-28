@@ -35,10 +35,26 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Order getOrderByHouseId(int id) {
+        try (SqlSession session = SqlUtil.getSession()) {
+            OrderMapper mapper = session.getMapper(OrderMapper.class);
+            return mapper.getOrderByHouseId(id);
+        }
+    }
+
+    @Override
     public List<Order> getOrders() {
         try (SqlSession session = SqlUtil.getSession()) {
             OrderMapper mapper = session.getMapper(OrderMapper.class);
             return mapper.getOrders();
+        }
+    }
+
+    @Override
+    public List<Order> getUserOrders(int id) {
+        try (SqlSession session = SqlUtil.getSession()) {
+            OrderMapper mapper = session.getMapper(OrderMapper.class);
+            return mapper.getUserOrders(id);
         }
     }
 }

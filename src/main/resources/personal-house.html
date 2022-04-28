@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>用户界面</title>
+    <title>个人房屋</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-caption hero-caption2">
-                            <h2 th:text="${user.getName()} + |的主页|"></h2>
+                            <h2 th:text="${user.getName()} + |的个人房屋|"></h2>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="job_details_header" th:each="house:${user_houses}">
+                    <div class="job_details_header" th:each="house:${user_personal_houses}">
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
@@ -98,8 +98,11 @@
                                         <label style="display: none">
                                             <input type="text" name="house-id" th:value="${house.getId()}">
                                         </label>
-                                        <button type="submit" th:if="${house.getIsRent()}" class="boxed-btn4">取消已租用</button>
-                                        <button type="submit" th:unless="${house.getIsRent()}" class="boxed-btn4">确认已租用</button>
+                                        <button type="submit" th:if="${house.getIsRent()}" class="boxed-btn4">取消已租用
+                                        </button>
+                                        <button type="submit" th:unless="${house.getIsRent()}" class="boxed-btn4">
+                                            确认已租用
+                                        </button>
                                     </form>
                                     <form method="post" action="delete-house" class="apply_now">
                                         <label style="display: none">
@@ -131,9 +134,6 @@
             </div>
         </div>
     </div>
-    </div>
-
-
 </main>
 <div th:replace="template.html::footer"></div>
 <!-- Scroll Up -->

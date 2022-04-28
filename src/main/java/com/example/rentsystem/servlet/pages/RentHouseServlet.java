@@ -16,8 +16,8 @@ import org.thymeleaf.context.Context;
 
 import java.io.IOException;
 
-@WebServlet("/borrow-house")
-public class BorrowHouseServlet extends HttpServlet {
+@WebServlet("/rent-house")
+public class RentHouseServlet extends HttpServlet {
 
     HouseService houseService;
     UserService userService;
@@ -42,6 +42,6 @@ public class BorrowHouseServlet extends HttpServlet {
         context.setVariable("user", user);
         context.setVariable("house", house);
         context.setVariable("phone", user.getPhone());
-        ThymeleafUtil.process("borrow-house.html", context, resp.getWriter());
+        ThymeleafUtil.process("rent-house.html", context, resp.getWriter());
     }
 }

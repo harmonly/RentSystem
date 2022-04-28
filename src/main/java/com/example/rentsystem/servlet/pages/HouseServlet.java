@@ -13,7 +13,7 @@ import org.thymeleaf.context.Context;
 import java.io.IOException;
 
 @WebServlet("/house")
-public class BrowseHouseServlet extends HttpServlet {
+public class HouseServlet extends HttpServlet {
 
     HouseService service;
 

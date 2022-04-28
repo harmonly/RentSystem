@@ -31,6 +31,26 @@ public interface OrderMapper {
             @Result(column = "b_time", property = "bTime"),
             @Result(column = "e_time", property = "eTime"),
     })
+    @Select("select * from `order` where house_id = #{id}")
+    Order getOrderByHouseId(int id);
+
+    @Results({
+            @Result(column = "buy_id", property = "buyId"),
+            @Result(column = "owner_id", property = "ownerId"),
+            @Result(column = "house_id", property = "houseId"),
+            @Result(column = "b_time", property = "bTime"),
+            @Result(column = "e_time", property = "eTime"),
+    })
     @Select("select * from `order`")
     List<Order> getOrders();
+
+    @Results({
+            @Result(column = "buy_id", property = "buyId"),
+            @Result(column = "owner_id", property = "ownerId"),
+            @Result(column = "house_id", property = "houseId"),
+            @Result(column = "b_time", property = "bTime"),
+            @Result(column = "e_time", property = "eTime"),
+    })
+    @Select("select * from `order` where buy_id = ${id}")
+    List<Order> getUserOrders(int id);
 }

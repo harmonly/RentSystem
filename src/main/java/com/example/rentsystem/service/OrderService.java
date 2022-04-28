@@ -12,5 +12,9 @@ public interface OrderService {
 
     Order getOrder(int id);
 
+    Order getOrderByHouseId(int id);
+
     List<Order> getOrders();
+
+    List<Order> getUserOrders(int id);
 }

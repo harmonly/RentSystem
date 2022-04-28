@@ -1,0 +1,150 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>租用房屋</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div th:replace="template.html::header"></div>
+<main th:object="${user}">
+    <!-- Hero Area Start-->
+    <div class="slider-area gray-bg position-relative">
+        <div class="single-slider d-flex align-items-center slider-height2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-caption hero-caption2">
+                            <h2 th:text="${user.getName()} + |的租用房屋|"></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Area End -->
+
+    <div class="job_details_area section-bg2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="recent_joblist_wrap">
+                        <div class="recent_joblist white-bg ">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h4>房屋列表</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job_details_header" th:each="house:${user_rented_houses}">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img th:src="${house.getPic()}" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a><h4 th:text="${house.getName()}"></h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p><i class='fas fa-map-marker-alt'>
+                                            </i><a th:text="${house.getLocation()}"></a></p>
+                                        </div>
+                                        <div class="location">
+                                            <p>
+                                                <i class="far">
+                                                    <svg width="18" height="18" viewBox="0 0 48 48" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4 14C4 12.8954 4.89543 12 6 12H42C43.1046 12 44 12.8954 44 14V40C44 41.1046 43.1046 42 42 42H6C4.89543 42 4 41.1046 4 40V14Z"
+                                                              fill="none" stroke="#aeadb2" stroke-width="4"
+                                                              stroke-linejoin="round"/>
+                                                        <path d="M19 19L24 24L29 19" stroke="#aeadb2"
+                                                              stroke-width="4" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                        <path d="M18 25H30" stroke="#aeadb2" stroke-width="4"
+                                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M18 31H30" stroke="#aeadb2" stroke-width="4"
+                                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M24 25V35" stroke="#aeadb2" stroke-width="4"
+                                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M8 6H40" stroke="#aeadb2" stroke-width="4"
+                                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </i>
+                                                <a th:text="${house.getPrice()} +元每月"></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3 th:text="${user.getName()}"></h3>
+                        </div>
+                        <div class="job_content">
+                            <ul>
+                                <li>账号: <span th:text="${user.getAccount()}"></span></li>
+                                <li>电话: <span th:text="${user.getPhone()}"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="template.html::footer"></div>
+<!-- Scroll Up -->
+<div id="back-top">
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+<!-- JS here -->
+<!-- Jquery, Popper, Bootstrap -->
+<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="./assets/js/popper.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+
+<!-- Slick , Owl-Carousel , Mobile Menu-->
+<script src="./assets/js/owl.carousel.min.js"></script>
+<script src="./assets/js/slick.min.js"></script>
+<script src="./assets/js/jquery.slicknav.min.js"></script>
+<script src="./assets/js/range.js"></script>
+
+<!-- wow, popup, Nice-select  -->
+<script src="./assets/js/wow.min.js"></script>
+<script src="./assets/js/jquery.magnific-popup.js"></script>
+<script src="./assets/js/jquery.nice-select.min.js"></script>
+
+<!-- contact js -->
+<script src="./assets/js/contact.js"></script>
+<script src="./assets/js/jquery.form.js"></script>
+<script src="./assets/js/jquery.validate.min.js"></script>
+<script src="./assets/js/mail-script.js"></script>
+<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/main.js"></script>
+</body>
+</html>

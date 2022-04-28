@@ -1,6 +1,7 @@
 import com.example.rentsystem.entity.Order;
 import com.example.rentsystem.entity.User;
 import com.example.rentsystem.mapper.HouseMapper;
+import com.example.rentsystem.mapper.OrderMapper;
 import com.example.rentsystem.mapper.UserMapper;
 import com.example.rentsystem.service.OrderService;
 import com.example.rentsystem.service.UserService;
