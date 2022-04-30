@@ -39,7 +39,7 @@ public class RentedHouseServlet extends HttpServlet {
             return;
         }
         List<House> list = new ArrayList<>();
-        orderService.getUserOrders(user.getId()).forEach(order -> list.add(houseService.getHouse(order.getOwnerId())));
+        orderService.getUserOrders(user.getId()).forEach(order -> list.add(houseService.getHouse(order.getHouseId())));
 
         Context context = new Context();
         context.setVariable("user", user);
