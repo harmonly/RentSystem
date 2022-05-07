@@ -92,6 +92,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <form method="post" action="change-house-is-rent">
+                                        <label style="display: none">
+                                            <input type="text" name="house-id" th:value="${house.getId()}">
+                                        </label>
+                                        <button type="submit" th:if="${house.getIsRent()}" class="boxed-btn4">退租
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

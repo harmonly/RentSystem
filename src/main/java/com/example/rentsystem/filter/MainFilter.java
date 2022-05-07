@@ -15,6 +15,7 @@ public class MainFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         req.setCharacterEncoding("UTF-8");
+        res.setContentType("text/html;charset=UTF-8");
         res.setCharacterEncoding("UTF-8");
 
         chain.doFilter(req, res);

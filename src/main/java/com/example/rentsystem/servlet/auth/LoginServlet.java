@@ -5,10 +5,7 @@ import com.example.rentsystem.service.impl.UserServiceImpl;
 import com.example.rentsystem.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import org.thymeleaf.context.Context;
 
 import java.io.IOException;
@@ -25,6 +22,22 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Cookie[] cookies = req.getCookies();
+        if (cookies != null) {
+            String username = null;
+            String password = null;
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username")) username = cookie.getValue();
+                if (cookie.getName().equals("password")) password = cookie.getValue();
+            }
+            if (username != null && password != null) {
+                if (service.auth(username, password, req.getSession())) {
+                    resp.sendRedirect("index");
+                    return;   //直接返回
+                }
+            }
+        }
+
         Context context = new Context();
         HttpSession session = req.getSession();
         // 已经登录
@@ -58,6 +71,14 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         String keepLog = req.getParameter("keep-log");
         if (service.auth(username, password, req.getSession())) {
+            if (keepLog != null) {
+                Cookie cookie_username = new Cookie("username", username);
+                cookie_username.setMaxAge(60 * 60 * 24 * 7);
+                Cookie cookie_password = new Cookie("password", password);
+                cookie_password.setMaxAge(60 * 60 * 24 * 7);
+                resp.addCookie(cookie_username);
+                resp.addCookie(cookie_password);
+            }
             resp.sendRedirect("index");
         } else {
             req.getSession().setAttribute("login-failure", true);
