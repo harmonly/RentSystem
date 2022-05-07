@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>登录</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./assets/css/slicknav.css">
+    <link rel="stylesheet" href="./assets/css/animate.min.css">
+    <link rel="stylesheet" href="./assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="./assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./assets/css/themify-icons.css">
+    <link rel="stylesheet" href="./assets/css/slick.css">
+    <link rel="stylesheet" href="./assets/css/nice-select.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+<div th:replace="template.html::header"></div>
+<main>
+    <!-- login Area Start -->
+    <div class="login-form-area section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-7 col-md-10">
+                    <form class="login-form" method="post" action="login">
+                        <!-- Login Heading -->
+                        <div class="login-heading">
+                            <span>登录</span>
+                            <p th:style="${login_info_style}" th:text="${login_info}"></p>
+                        </div>
+                        <!-- Single Input Fields -->
+                        <div class="input-box">
+                            <div class="single-input-fields">
+                                <label>账号</label>
+                                <input type="text" placeholder="输入账号" name="username">
+                            </div>
+                            <div class="single-input-fields">
+                                <label>密码</label>
+                                <input type="password" placeholder="输入密码" name="password">
+                            </div>
+                            <div class="single-input-fields login-check">
+                                <input type="checkbox" id="fruit1" name="keep-log">
+                                <label for="fruit1">记住我</label>
+                                <a href="#" class="f-right">忘记密码?</a>
+                            </div>
+                        </div>
+                        <!-- form Footer -->
+                        <div class="login-footer">
+                            <p>没有账号?<a href="sign-up">点此注册</a></p>
+                            <button class="btn login-btn" type="submit">登录</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login Area End -->
+</main>
+<div th:replace="template.html::footer"></div>
+<!-- Scroll Up -->
+<div id="back-top">
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+</body>
+</html>
