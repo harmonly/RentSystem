@@ -16,5 +16,9 @@ public interface HouseService {
 
     List<House> getUserHouses(int id);
 
+    List<House> findHousesByKeyWord(String keyword);
+
+    List<House> findHousesByLocation(String location);
+
     int editHouse(House house);
 }

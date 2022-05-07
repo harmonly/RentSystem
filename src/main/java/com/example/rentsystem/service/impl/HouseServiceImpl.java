@@ -51,6 +51,22 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
+    public List<House> findHousesByKeyWord(String keyword) {
+        try (SqlSession session = SqlUtil.getSession()) {
+            HouseMapper mapper = session.getMapper(HouseMapper.class);
+            return mapper.findHousesByKeyWord("%" + keyword + "%");
+        }
+    }
+
+    @Override
+    public List<House> findHousesByLocation(String location) {
+        try (SqlSession session = SqlUtil.getSession()) {
+            HouseMapper mapper = session.getMapper(HouseMapper.class);
+            return mapper.findHousesByLocation(location + "%");
+        }
+    }
+
+    @Override
     public int editHouse(House house) {
         try (SqlSession session = SqlUtil.getSession()) {
             HouseMapper mapper = session.getMapper(HouseMapper.class);

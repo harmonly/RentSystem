@@ -3,8 +3,10 @@ import com.example.rentsystem.entity.User;
 import com.example.rentsystem.mapper.HouseMapper;
 import com.example.rentsystem.mapper.OrderMapper;
 import com.example.rentsystem.mapper.UserMapper;
+import com.example.rentsystem.service.HouseService;
 import com.example.rentsystem.service.OrderService;
 import com.example.rentsystem.service.UserService;
+import com.example.rentsystem.service.impl.HouseServiceImpl;
 import com.example.rentsystem.service.impl.OrderServiceImpl;
 import com.example.rentsystem.service.impl.UserServiceImpl;
 import com.example.rentsystem.utils.SqlUtil;
@@ -20,15 +22,8 @@ public class MainTest {
 
     @Test
     public void test() throws ParseException {
-/*        HouseService service = new HouseServiceImpl();
-        service.addHouse(House.builder()
-                .isRent(0)
-                .location("四川省成都市")
-                .name("太医有房")
-                .ownerId(1)
-                .price(998)
-                .build());
-        service.getHouses().forEach(System.out::println);*/
+        HouseService service = new HouseServiceImpl();
+        service.findHousesByKeyWord("馨").forEach(System.out::println);
 /*        OrderService service = new OrderServiceImpl();
         service.addOrder(Order.builder()
                 .ownerId(1)

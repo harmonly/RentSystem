@@ -26,7 +26,7 @@ public class House {
         return new SimpleDateFormat("yyyy-MM-dd").format(bTime);
     }
 
-    // 将bTime格式化
+    // 将eTime格式化
     public String parseETime() {
         return new SimpleDateFormat("yyyy-MM-dd").format(eTime);
     }

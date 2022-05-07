@@ -41,9 +41,6 @@ public class ChangeHouseRentServlet extends HttpServlet {
         if (house.getIsRent() == 1) {
             house.setIsRent(0);
             orderService.deleteOrder(orderService.getOrderByHouseId(houseId).getId());
-        } else if (house.getIsRent() == 0) {
-            resp.sendRedirect("personal-house");
-            return;
         }
         houseService.editHouse(house);
         resp.sendRedirect("personal-house");

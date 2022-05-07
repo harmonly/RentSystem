@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
-
 .section-bg1 {
     background: #FFF6FE
 }
@@ -148,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0px;
     font-style: normal;
     font-weight: 500;
-    text-transform: normal
+    text-transform: none;
 }
 
 p {
@@ -2316,7 +2315,7 @@ hr {
     border: 1px solid #000DFF;
     color: #000DFF;
     background: none;
-    text-transform: normal;
+    text-transform: none;
     padding: 13px 34px !important;
     -moz-user-select: none;
     cursor: pointer;

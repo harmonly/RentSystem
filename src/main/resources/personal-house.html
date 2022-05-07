@@ -100,9 +100,6 @@
                                         </label>
                                         <button type="submit" th:if="${house.getIsRent()}" class="boxed-btn4">取消已租用
                                         </button>
-                                        <button type="submit" th:unless="${house.getIsRent()}" class="boxed-btn4">
-                                            确认已租用
-                                        </button>
                                     </form>
                                     <form method="post" action="delete-house" class="apply_now">
                                         <label style="display: none">

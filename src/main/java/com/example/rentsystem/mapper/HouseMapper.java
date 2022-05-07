@@ -41,6 +41,12 @@ public interface HouseMapper {
     @Select("select * from house where owner_id = #{id}")
     List<House> getUserHouses(int id);
 
+    @Select("select * from house where name like #{keyword}")
+    List<House> findHousesByKeyWord(String keyword);
+
+    @Select("select * from house where location like #{location}")
+    List<House> findHousesByLocation(String location);
+
     @Update("update house set owner_id = #{ownerId}, is_rent = #{isRent}, b_time = #{bTime}, e_time = #{eTime}, pic = #{pic} where id = #{id}")
     int editHouse(House house);
 }

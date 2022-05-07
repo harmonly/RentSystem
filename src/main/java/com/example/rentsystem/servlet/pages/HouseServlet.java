@@ -29,4 +29,15 @@ public class HouseServlet extends HttpServlet {
         context.setVariable("house_list", service.getHouses());
         ThymeleafUtil.process("house.html", context, resp.getWriter());
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String keyword = req.getParameter("keyword");
+        String location= req.getParameter("location");
+        Context context = new Context();
+        context.setVariable("user", req.getSession().getAttribute("user"));
+        context.setVariable("house_list", service.findHousesByKeyWord(keyword));
+        context.setVariable("house_list", service.findHousesByLocation(location));
+        ThymeleafUtil.process("house.html", context, resp.getWriter());
+    }
 }
